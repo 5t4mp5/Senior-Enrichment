@@ -11,29 +11,47 @@ const Student = db.define("student", {
     type: Sequelize.STRING,
     allowNull: false,
     validate: {
-      notEmpty: true
+      notEmpty: {
+        args: true,
+        msg: "Student must have a first name."
+      }
     }
   },
   lastName: {
     type: Sequelize.STRING,
     allowNull: false,
     validate: {
-      notEmpty: true
+      notEmpty: {
+        args: true,
+        msg: "Student must have a last name."
+      }
     }
   },
   email: {
     type: Sequelize.STRING,
     allowNull: false,
     validate: {
-      notEmpty: true,
-      isEmail: true
+      notEmpty: {
+        args: true,
+        msg: "Student must have an email address."
+      },
+      isEmail: {
+        args: true,
+        msg: "Please enter a valid email address."
+      }
     }
   },
   gpa: {
     type: Sequelize.DECIMAL(10, 1),
     validate: {
-      min: 0.0,
-      max: 4.0
+      min: {
+        args: 0.0,
+        msg: "GPA cannot be lower than 0."
+      },
+      max: {
+        args: 4.0,
+        msg: "GPA cannot be greater than 4.0."
+      }
     }
   }
 });

@@ -11,7 +11,10 @@ const Campus = db.define("campus", {
       type: Sequelize.STRING,
       allowNull: false,
       validate: {
-        notEmpty: true
+        notEmpty: {
+          args: true,
+          msg: "Campus must have a name."
+        }
       }
     },
     imgUrl: {
@@ -23,11 +26,21 @@ const Campus = db.define("campus", {
       type: Sequelize.STRING,
       allowNull: false,
       validate: {
-        notEmpty: true
+        notEmpty: {
+          args: true,
+          msg: "Campus must have an address."
+        }
       }
     },
     description: {
-      type: Sequelize.TEXT
+      type: Sequelize.TEXT,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          args: true,
+          message: "Campus must have a description."
+        }
+      }
     }
   });
 
