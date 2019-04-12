@@ -5,7 +5,7 @@ const seed = require("./seed");
 const dbSyncAndSeed = () => {
   return db
     .authenticate()
-    .then(() => db.sync())
+    .then(() => db.sync({ force: true }))
     .then(() => seed())
     .then(() => console.log("DB SYNC AND SEED COMPLETE"));
 };
