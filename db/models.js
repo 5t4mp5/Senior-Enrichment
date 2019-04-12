@@ -23,7 +23,7 @@ const Campus = db.define("campus", {
     type: Sequelize.STRING,
     allowNull: false,
     validate: {
-      isEmpty: false
+      notEmpty: true
     }
   },
   description: {
@@ -31,4 +31,44 @@ const Campus = db.define("campus", {
   }
 });
 
-module.exports = { Campus };
+const Student = db.define("student", {
+  id: {
+    type: Sequelize.UUID,
+    defaultValue: Sequelize.UUIDV4,
+    primaryKey: true
+  },
+  firstName: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: true
+    }
+  },
+  lastName: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: true
+    }
+  },
+  email: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: true,
+      isEmail: true
+    }
+  },
+  gpa: {
+    type: Sequelize.DECIMAL(10, 1),
+    validate: {
+      min: 0.0,
+      max: 4.0
+    }
+  }
+});
+
+Campus.hasMany(Student);
+Student.belongsTo(Campus);
+
+module.exports = { Campus, Student };

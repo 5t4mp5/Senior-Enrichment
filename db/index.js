@@ -1,4 +1,4 @@
 const { dbSyncAndSeed } = require("./db");
-const { Campus } = require("./models");
+const { Campus, Student } = require("./models");
 
-module.exports = { dbSyncAndSeed, Campus };
+module.exports = { dbSyncAndSeed, Campus, Student };
