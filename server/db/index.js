@@ -1,4 +1,13 @@
-const { dbSyncAndSeed } = require("./db");
+const db = require("./db");
 const { Campus, Student } = require("./models");
+const seed = require("./seed");
 
-module.exports = { dbSyncAndSeed, Campus, Student };
+const dbSyncAndSeed = () => {
+  return db
+    .authenticate()
+    .then(() => db.sync())
+    .then(() => seed())
+    .then(() => console.log("DB SYNC AND SEED COMPLETE"));
+};
+
+module.exports = { dbSyncAndSeed, seed, Campus, Student };
