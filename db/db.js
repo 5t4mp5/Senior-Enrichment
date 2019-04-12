@@ -1,8 +1,11 @@
 const Sequelize = require("sequelize");
-const db = Sequelize(process.env.DATABASE_URL, { logging: false });
+const db = new Sequelize(process.env.DATABASE_URL, { logging: false });
 
-module.exports = () => {
-    db.authenticate()
-        .then(() => db.sync())
-        .then(() => console.log("DB SYNC COMPLETE"));
-}
+const dbSyncAndSeed = () => {
+  return db
+    .authenticate()
+    .then(() => db.sync({ force: true }))
+    .then(() => console.log("DB SYNC COMPLETE"));
+};
+
+module.exports = { db, dbSyncAndSeed };

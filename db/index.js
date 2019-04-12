@@ -1,3 +1,4 @@
-const dbSyncAndSeed = require("./db");
+const { dbSyncAndSeed } = require("./db");
+const { Campus } = require("./models");
 
-module.exports = { dbSyncAndSeed };
+module.exports = { dbSyncAndSeed, Campus };
