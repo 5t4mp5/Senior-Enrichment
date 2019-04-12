@@ -17,7 +17,7 @@ module.exports = () => {
         firstName: "Steve",
         lastName: "Austin",
         email: "austin@bsr.com",
-        gpa: 3.5,
+        gpa: 3.1,
         campusId: campus1.id
     }));
 };
