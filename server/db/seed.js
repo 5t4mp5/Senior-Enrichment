@@ -13,11 +13,20 @@ module.exports = () => {
             description: "It's spoooooooooky!"
         })
     ])
-    .then(([campus1, campus2]) => Student.create({
-        firstName: "Steve",
-        lastName: "Austin",
-        email: "austin@bsr.com",
-        gpa: 3.1,
-        campusId: campus1.id
-    }));
+    .then(([campus1, campus2]) => Promise.all([
+        Student.create({
+            firstName: "Steve",
+            lastName: "Austin",
+            email: "austin@bsr.com",
+            gpa: 3.1,
+            campusId: campus1.id
+        }),
+        Student.create({
+            firstName: "Lanny",
+            lastName: "Poffo",
+            email: "genius@poffo.com",
+            gpa: 4.0,
+            campusId: campus2.id
+        })
+    ]));
 };

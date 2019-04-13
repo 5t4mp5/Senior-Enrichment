@@ -8,7 +8,7 @@ const Nav = () => {
     <ul className="nav nav-tabs">
       {tabs.map(tab => (
         <li key={tab} className="nav-item">
-          <Link to={tab.toLowerCase()} className="nav-link">
+          <Link to={`/${tab.toLowerCase()}`} className="nav-link">
             {tab}
           </Link>
         </li>
