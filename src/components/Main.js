@@ -4,6 +4,7 @@ import { Route, Switch } from "react-router-dom";
 import { refreshCampuses, refreshStudents } from "../store";
 import Campuses from "./Campuses";
 import Students from "./Students";
+import Nav from "./Nav";
 
 const mapDispatchToProps = dispatch => ({
   refreshCampuses: () => dispatch(refreshCampuses()),
@@ -18,6 +19,7 @@ class Main extends Component {
   render() {
     return (
       <div className="container">
+        <Route component={Nav} />
         <Switch>
           <Route path="/campuses" component={Campuses} />
           <Route path="/students" component={Students} />

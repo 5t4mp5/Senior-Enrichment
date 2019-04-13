@@ -7,11 +7,14 @@ const mapStateToProps = state => ({
 });
 
 const Students = ({ students }) => (
-  <ul className="list-group">
-    {students.map(student => (
-      <Student key={student.id} student={student} />
-    ))}
-  </ul>
+  <div>
+    <h1>STUDENTS</h1>
+    <ul className="list-group">
+      {students.map(student => (
+        <Student key={student.id} student={student} />
+      ))}
+    </ul>
+  </div>
 );
 
 export default connect(mapStateToProps)(Students);
