@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { refreshCampuses, refreshStudents } from "../store";
+import Campuses from "./Campuses";
 
 const mapDispatchToProps = dispatch => ({
   refreshCampuses: () => dispatch(refreshCampuses()),
@@ -13,7 +14,7 @@ class Main extends Component {
     this.props.refreshStudents().catch(e => console.log(e.message));
   }
   render() {
-    return <h1>HELLO THERE!!</h1>;
+    return <Campuses />;
   }
 }
 
