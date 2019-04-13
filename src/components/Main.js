@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Route, Switch } from "react-router-dom";
 import { refreshCampuses, refreshStudents } from "../store";
 import Campuses from "./Campuses";
+import Students from "./Students";
 
 const mapDispatchToProps = dispatch => ({
   refreshCampuses: () => dispatch(refreshCampuses()),
@@ -14,7 +16,14 @@ class Main extends Component {
     this.props.refreshStudents().catch(e => console.log(e.message));
   }
   render() {
-    return <Campuses />;
+    return (
+      <div className="container">
+        <Switch>
+          <Route path="/campuses" component={Campuses} />
+          <Route path="/students" component={Students} />
+        </Switch>
+      </div>
+    );
   }
 }
 
