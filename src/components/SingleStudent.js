@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { getStudentCampus } from "../store";
+import Campus  from "./Campus";
 
 const mapStateToProps = state => ({
   students: state.students,
@@ -20,7 +21,7 @@ const SingleStudent = ({ match, students, campuses }) => {
         <p className="card-text">Email: {student.email}</p>
         <p className="card-text">GPA: {student.gpa}</p>
         <p className="card-text">
-          Campus: {campus ? campus.name : "No Campus"}
+          Campus: {campus ? <Campus campus={campus} /> : "No Campus"}
         </p>
       </div>
     </div>

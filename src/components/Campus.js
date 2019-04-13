@@ -1,9 +1,10 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Campus = ({ campus }) => (
   <li className="list-group-item">
     <span>
-      {campus.name} <img src={campus.imgUrl} />
+      <Link to={`/campuses/${campus.id}`}>{campus.name}</Link><img src={campus.imgUrl} />
     </span>
   </li>
 );
