@@ -59,7 +59,7 @@ const reducer = combineReducers({
 });
 
 export const getStudentCampus = (campusId, campuses) => {
-   return campuses.find(campus => campusId === campus.id);
+  return campuses.find(campus => campusId === campus.id);
 };
 
 export const getCampusStudents = (campusId, students) => {
@@ -68,16 +68,37 @@ export const getCampusStudents = (campusId, students) => {
 
 export const addCampus = campus => {
   return dispatch => {
-    return axios.post("/api/campuses", campus)
+    return axios
+      .post("/api/campuses", campus)
+      .then(() => dispatch(refreshCampuses()));
+  };
+};
+
+export const removeCampus = campus => {
+  return dispatch => {
+    return axios
+      .delete(`/api/campuses/${campus.id}`)
       .then(() => dispatch(refreshCampuses()));
   };
 };
 
 export const addStudent = student => {
   return dispatch => {
-    return axios.post("/api/students", student)
+    return axios
+      .post("/api/students", student)
       .then(() => dispatch(refreshStudents()));
   };
 };
 
-export default createStore(reducer, applyMiddleware(thunkMiddleware, createLogger({ collapsed: true })))
+export const removeStudent = student => {
+  return dispatch => {
+    return axios
+      .delete(`/api/students/${student.id}`)
+      .then(() => dispatch(refreshStudents()));
+  };
+};
+
+export default createStore(
+  reducer,
+  applyMiddleware(thunkMiddleware, createLogger({ collapsed: true }))
+);
