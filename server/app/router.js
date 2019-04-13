@@ -8,9 +8,9 @@ router.get("/campuses", (req, res, next) => {
     .catch(e => console.log(e.message));
 });
 
-router.get("/campuses/:id", (req, res, next) => {
-  Campus.findByPk(req.params.id, { include: [Student] })
-    .then(campus => res.json(campus))
+router.post("/campuses", (req, res, next) => {
+  Campus.create(req.body)
+    .then(campus => res.status(201).json(campus))
     .catch(e => console.log(e.message));
 });
 
@@ -20,9 +20,10 @@ router.get("/students", (req, res, next) => {
     .catch(e => console.log(e.message));
 });
 
-router.get("/students/:id", (req, res, next) => {
-  Student.findByPk(req.params.id, { include: Campus })
-    .then(student => res.json(student));
+router.post("/students", (req, res, next) => {
+  Student.create(req.body)
+    .then(students => res.status(201).json(students))
+    .catch(e => console.log(e.message));
 });
 
 module.exports = router;
