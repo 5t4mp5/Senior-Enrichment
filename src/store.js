@@ -58,4 +58,9 @@ const reducer = combineReducers({
   students: studentReducer
 });
 
+export const getSingleStudent = id => {
+  return axios.get(`/api/students/${id}`)
+    .then(student => student.data);
+};
+
 export default createStore(reducer, applyMiddleware(thunkMiddleware, createLogger({ collapsed: true })))
