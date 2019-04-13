@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import Student from "./Student";
 
 const mapStateToProps = state => ({
@@ -14,6 +15,7 @@ const Students = ({ students }) => (
         <Student key={student.id} student={student} />
       ))}
     </ul>
+    <Link className="btn btn-primary" to="/create-student">Create Student</Link>
   </div>
 );
 

@@ -1,19 +1,20 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { addCampus } from "../store";
+import { addStudent } from "../store";
 
 const mapDispatchToProps = dispatch => ({
-  addCampus: campus => dispatch(addCampus(campus))
+  addStudent: student => dispatch(addStudent(student))
 });
 
-class CreateCampus extends Component {
+class CreateStudent extends Component {
   constructor() {
     super();
     this.state = {
-      name: "",
-      address: "",
+      firstName: "",
+      lastName: "",
+      email: "",
       imgUrl: "",
-      description: ""
+      gpa: 0
     };
   }
   handleChange = evt => {
@@ -21,28 +22,37 @@ class CreateCampus extends Component {
   };
   handleSubmit = evt => {
     evt.preventDefault();
-    this.props.addCampus(this.state)
-      .then(() => this.props.history.push("/campuses"));
+    this.props.addStudent(this.state)
+      .then(() => this.props.history.push("/students"));
   };
   render() {
-    const { name, address, imgUrl, description } = this.state;
+    const { firstName, lastName, email, imgUrl, gpa } = this.state;
     return (
       <form onSubmit={this.handleSubmit}>
-        <label htmlFor="name">Name</label>
+        <label htmlFor="firstName">First Name</label>
         <input
           className="form-control"
           type="text"
-          value={name}
-          name="name"
+          value={firstName}
+          name="firstName"
           onChange={this.handleChange}
         />
 
-        <label htmlFor="address">Address</label>
+        <label htmlFor="lastName">Last Name</label>
         <input
           className="form-control"
           type="text"
-          value={address}
-          name="address"
+          value={lastName}
+          name="lastName"
+          onChange={this.handleChange}
+        />
+
+        <label htmlFor="email">Email</label>
+        <input
+          className="form-control"
+          type="text"
+          value={email}
+          name="email"
           onChange={this.handleChange}
         />
 
@@ -55,14 +65,15 @@ class CreateCampus extends Component {
           onChange={this.handleChange}
         />
 
-        <label htmlFor="description">Description</label>
+        <label htmlFor="gpa">GPA</label>
         <input
           className="form-control"
           type="text"
-          value={description}
-          name="description"
+          value={gpa}
+          name="gpa"
           onChange={this.handleChange}
         />
+
         <button type="submit" className="btn btn-primary">
           Submit
         </button>
@@ -74,4 +85,4 @@ class CreateCampus extends Component {
 export default connect(
   null,
   mapDispatchToProps
-)(CreateCampus);
+)(CreateStudent);

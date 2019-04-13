@@ -68,9 +68,15 @@ export const getCampusStudents = (campusId, students) => {
 
 export const addCampus = campus => {
   return dispatch => {
-    console.log(campus);
     return axios.post("/api/campuses", campus)
       .then(() => dispatch(refreshCampuses()));
+  };
+};
+
+export const addStudent = student => {
+  return dispatch => {
+    return axios.post("/api/students", student)
+      .then(() => dispatch(refreshStudents()));
   };
 };
 

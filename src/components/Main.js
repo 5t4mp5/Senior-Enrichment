@@ -7,6 +7,7 @@ import Students from "./Students";
 import SingleStudent from "./SingleStudent";
 import SingleCampus from "./SingleCampus";
 import CreateCampus from "./CreateCampus";
+import CreateStudent from "./CreateStudent";
 import Nav from "./Nav";
 
 const mapDispatchToProps = dispatch => ({
@@ -29,6 +30,7 @@ class Main extends Component {
           <Route path="/students/:id" component={SingleStudent} />
           <Route path="/students" component={Students} />
           <Route path="/create-campus" component={CreateCampus} />
+          <Route path="/create-student" component={CreateStudent} />
         </Switch>
       </div>
     );
