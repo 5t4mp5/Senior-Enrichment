@@ -9,8 +9,8 @@ const mapStateToProps = state => ({
 
 const SingleStudent = ({ match, students, campuses }) => {
   const student = students.find(_student => _student.id === match.params.id);
-  const campus = getStudentCampus(student.campusId, campuses);
-  return (
+  const campus = student ? getStudentCampus(student.campusId, campuses) : {};
+  return student ? (
     <div className="card">
       <div className="card-body">
         <img src={student.imageUrl} className="card-img-top" />
@@ -24,7 +24,7 @@ const SingleStudent = ({ match, students, campuses }) => {
         </p>
       </div>
     </div>
-  );
+  ): null;
 };
 
 export default connect(mapStateToProps)(SingleStudent);
