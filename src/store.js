@@ -62,4 +62,8 @@ export const getStudentCampus = (campusId, campuses) => {
    return campuses.find(campus => campusId === campus.id);
 };
 
+export const getCampusStudents = (campusId, students) => {
+  return students.filter(student => student.campusId === campusId);
+};
+
 export default createStore(reducer, applyMiddleware(thunkMiddleware, createLogger({ collapsed: true })))

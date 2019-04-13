@@ -41,7 +41,7 @@ const Student = db.define("student", {
       }
     }
   },
-  imageUrl: {
+  imgUrl: {
     type: Sequelize.STRING,
     defaultValue: "https://static.wixstatic.com/media/8e35a8_257d4ecb99b7413cb492305a7bb8a969~mv2.jpg/v1/fill/w_626,h_352/8e35a8_257d4ecb99b7413cb492305a7bb8a969~mv2.jpg" 
   },
