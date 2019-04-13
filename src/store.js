@@ -66,4 +66,12 @@ export const getCampusStudents = (campusId, students) => {
   return students.filter(student => student.campusId === campusId);
 };
 
+export const addCampus = campus => {
+  return dispatch => {
+    console.log(campus);
+    return axios.post("/api/campuses", campus)
+      .then(() => dispatch(refreshCampuses()));
+  };
+};
+
 export default createStore(reducer, applyMiddleware(thunkMiddleware, createLogger({ collapsed: true })))

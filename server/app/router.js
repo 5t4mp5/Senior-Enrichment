@@ -9,6 +9,7 @@ router.get("/campuses", (req, res, next) => {
 });
 
 router.post("/campuses", (req, res, next) => {
+  console.log("POST CAMPUS");
   Campus.create(req.body)
     .then(campus => res.status(201).json(campus))
     .catch(e => console.log(e.message));
