@@ -98,6 +98,14 @@ export const removeStudent = student => {
   };
 };
 
+export const updateStudent = student => {
+  return dispatch => {
+    return axios
+      .put(`/api/students/${student.id}`, student)
+      .then(() => dispatch(refreshStudents()));
+  };
+};
+
 export default createStore(
   reducer,
   applyMiddleware(thunkMiddleware, createLogger({ collapsed: true }))
