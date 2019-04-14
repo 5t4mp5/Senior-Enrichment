@@ -14,7 +14,7 @@ router.post("/campuses", (req, res, next) => {
     .catch(e => console.log(e.message));
 });
 
-router.put("/campusess/:id", (req, res,next) => {
+router.put("/campuses/:id", (req, res, next) => {
   Campus.findByPk(req.params.id)
     .then(campus => campus.update(req.body))
     .then(response => res.status(201).json(response))
@@ -40,7 +40,7 @@ router.post("/students", (req, res, next) => {
     .catch(e => console.log(e.message));
 });
 
-router.put("/students/:id", (req, res,next) => {
+router.put("/students/:id", (req, res, next) => {
   Student.findByPk(req.params.id)
     .then(student => student.update(req.body))
     .then(response => res.status(201).json(response))

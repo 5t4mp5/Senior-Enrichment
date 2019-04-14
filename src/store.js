@@ -82,6 +82,13 @@ export const removeCampus = campus => {
   };
 };
 
+export const updateCampus = campus => {
+  return dispatch => {
+    return axios.put(`/api/campuses/${campus.id}`, campus)
+      .then(() => dispatch(refreshCampuses()));
+  };
+};
+
 export const addStudent = student => {
   return dispatch => {
     return axios
