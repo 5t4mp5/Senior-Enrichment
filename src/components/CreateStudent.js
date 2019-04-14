@@ -3,10 +3,6 @@ import { connect } from "react-redux";
 import { addStudent } from "../store";
 import StudentForm from "./StudentForm";
 
-const mapStateToProps = state => ({
-  campuses: state.campuses
-});
-
 const mapDispatchToProps = dispatch => ({
   addStudent: student => dispatch(addStudent(student))
 });
@@ -24,7 +20,6 @@ class CreateStudent extends Component {
     };
   }
   handleChange = evt => {
-      console.log(evt.target.name, evt.target.value);
       this.setState({ [evt.target.name]: evt.target.value });
   };
   handleSubmit = evt => {
@@ -51,6 +46,6 @@ class CreateStudent extends Component {
 }
 
 export default connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps
 )(CreateStudent);

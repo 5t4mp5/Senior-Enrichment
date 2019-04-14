@@ -15,7 +15,8 @@ class UpdateStudent extends Component {
       lastName: "",
       email: "",
       imgUrl: "",
-      gpa: 0
+      gpa: 0,
+      campusId: ""
     };
   }
   componentDidMount() {
@@ -30,7 +31,7 @@ class UpdateStudent extends Component {
       .updateStudent(this.state);
   };
   render() {
-    const { firstName, lastName, email, imgUrl, gpa } = this.state;
+    const { firstName, lastName, email, imgUrl, gpa, campusId } = this.state;
     return (
       <StudentForm
         firstName={firstName}
@@ -38,6 +39,7 @@ class UpdateStudent extends Component {
         email={email}
         imgUrl={imgUrl}
         gpa={gpa}
+        campusId={campusId}
         handleChange={this.handleChange}
         handleSubmit={this.handleSubmit}
       />
