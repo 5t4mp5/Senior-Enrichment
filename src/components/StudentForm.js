@@ -1,4 +1,9 @@
 import React from "react";
+import { connect } from "react-redux";
+
+const mapStateToProps = state => ({
+  campuses: state.campuses
+});
 
 const StudentForm = ({
   firstName,
@@ -6,6 +11,8 @@ const StudentForm = ({
   email,
   imgUrl,
   gpa,
+  campusId,
+  campuses,
   handleSubmit,
   handleChange
 }) => {
@@ -56,6 +63,21 @@ const StudentForm = ({
         onChange={handleChange}
       />
 
+      <label htmlFor="campus">Campus</label>
+      <select
+        className="form-control"
+        name="campusId"
+        value={campusId}
+        onChange={handleChange}
+      >
+        <option value="">--none--</option>
+        {campuses.map(_campus => (
+          <option key={_campus.id} value={_campus.id}>
+            {_campus.name}
+          </option>
+        ))}
+      </select>
+
       <button type="submit" className="btn btn-primary">
         Submit
       </button>
@@ -63,4 +85,4 @@ const StudentForm = ({
   );
 };
 
-export default StudentForm;
+export default connect(mapStateToProps)(StudentForm);
