@@ -16,31 +16,51 @@ class CreateStudent extends Component {
       email: "",
       imgUrl: "",
       gpa: 0,
-      campusId: ""
+      campusId: "",
+      errors: []
     };
   }
   handleChange = evt => {
-      this.setState({ [evt.target.name]: evt.target.value });
+    this.setState({ [evt.target.name]: evt.target.value });
   };
   handleSubmit = evt => {
     evt.preventDefault();
     this.props
       .addStudent(this.state)
-      .then(() => this.props.history.push("/students"));
+      .then(() => this.props.history.push("/students"))
   };
   render() {
     const { firstName, lastName, email, imgUrl, campusId, gpa } = this.state;
     return (
-      <StudentForm
-        firstName={firstName}
-        lastName={lastName}
-        email={email}
-        imgUrl={imgUrl}
-        gpa={gpa}
-        campusId={campusId}
-        handleChange={this.handleChange}
-        handleSubmit={this.handleSubmit}
-      />
+      <div>
+        <StudentForm
+          firstName={firstName}
+          lastName={lastName}
+          email={email}
+          imgUrl={imgUrl}
+          gpa={gpa}
+          campusId={campusId}
+          handleChange={this.handleChange}
+          handleSubmit={this.handleSubmit}
+        />
+        {this.state.errors.length > 0 ? (
+          <ul className="alert alert-danger">
+            {this.state.errors.map((error, i) => {
+              return error.errors ? (
+                error.errors.map((_error, j) => {
+                  return <li key={i + j + _error.message}>{_error.message}</li>;
+                })
+              ) : error.length > 0 ? (
+                <li key={i + error.message}>{error}</li>
+              ) : (
+                ""
+              );
+            })}
+          </ul>
+        ) : (
+          ""
+        )}
+      </div>
     );
   }
 }
