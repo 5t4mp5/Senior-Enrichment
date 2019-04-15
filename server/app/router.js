@@ -9,6 +9,7 @@ router.get("/campuses", (req, res, next) => {
 });
 
 router.post("/campuses", (req, res, next) => {
+  if(!req.body.imgUrl.length) delete req.body.imgUrl;
   Campus.create(req.body)
     .then(campus => res.status(201).json(campus))
     .catch(next);
@@ -35,12 +36,15 @@ router.get("/students", (req, res, next) => {
 });
 
 router.post("/students", (req, res, next) => {
+  if(!req.body.imgUrl.length) delete req.body.imgUrl;
+  if (!req.body.campusId.length) delete req.body.campusId;
   Student.create(req.body)
     .then(students => res.status(201).json(students))
     .catch(next);
 });
 
 router.put("/students/:id", (req, res, next) => {
+  if (req.body.campusId && !req.body.campusId.length) req.body.campusId = null;
   Student.findByPk(req.params.id)
     .then(student => student.update(req.body))
     .then(response => res.status(201).json(response))
