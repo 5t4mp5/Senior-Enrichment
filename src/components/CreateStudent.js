@@ -28,6 +28,7 @@ class CreateStudent extends Component {
     this.props
       .addStudent(this.state)
       .then(() => this.props.history.push("/students"))
+      .catch(e => this.setState({ errors: e.response.data.errors }));
   };
   render() {
     const { firstName, lastName, email, imgUrl, campusId, gpa } = this.state;

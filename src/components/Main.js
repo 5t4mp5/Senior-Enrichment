@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import { refreshCampuses, refreshStudents } from "../store";
 import Campuses from "./Campuses";
 import Students from "./Students";
@@ -32,6 +32,7 @@ class Main extends Component {
           <Route path="/students" component={Students} />
           <Route path="/create-campus" component={CreateCampus} />
           <Route path="/create-student" component={CreateStudent} />
+          <Redirect exact from="/" to="/campuses" />
           <Route component={NoRoute} />
         </Switch>
       </div>

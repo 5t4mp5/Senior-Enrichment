@@ -16,7 +16,8 @@ class UpdateStudent extends Component {
       email: "",
       imgUrl: "",
       gpa: 0,
-      campusId: ""
+      campusId: "",
+      errors:[]
     };
   }
   componentDidMount() {
@@ -27,24 +28,46 @@ class UpdateStudent extends Component {
   };
   handleSubmit = evt => {
     evt.preventDefault();
-    this.props
-      .updateStudent(this.state);
+    this.props.updateStudent(this.state)
+      .catch(e => this.setState({ errors: e.response.data.errors }));
   };
   render() {
     const { firstName, lastName, email, imgUrl, gpa, campusId } = this.state;
     return (
-      <StudentForm
-        firstName={firstName}
-        lastName={lastName}
-        email={email}
-        imgUrl={imgUrl}
-        gpa={gpa}
-        campusId={campusId}
-        handleChange={this.handleChange}
-        handleSubmit={this.handleSubmit}
-      />
+      <div>
+        <StudentForm
+          firstName={firstName}
+          lastName={lastName}
+          email={email}
+          imgUrl={imgUrl}
+          gpa={gpa}
+          campusId={campusId}
+          handleChange={this.handleChange}
+          handleSubmit={this.handleSubmit}
+        />
+        {this.state.errors.length > 0 ? (
+          <ul className="alert alert-danger">
+            {this.state.errors.map((error, i) => {
+              return error.errors ? (
+                error.errors.map((_error, j) => {
+                  return <li key={i + j + _error.message}>{_error.message}</li>;
+                })
+              ) : error.length > 0 ? (
+                <li key={i + error.message}>{error}</li>
+              ) : (
+                ""
+              );
+            })}
+          </ul>
+        ) : (
+          ""
+        )}
+      </div>
     );
   }
 }
 
-export default connect(null, mapDispatchToProps)(UpdateStudent);
+export default connect(
+  null,
+  mapDispatchToProps
+)(UpdateStudent);

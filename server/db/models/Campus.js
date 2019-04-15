@@ -38,7 +38,7 @@ const Campus = db.define("campus", {
       validate: {
         notEmpty: {
           args: true,
-          message: "Campus must have a description."
+          msg: "Campus must have a description."
         }
       }
     }

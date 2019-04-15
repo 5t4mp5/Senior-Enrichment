@@ -14,7 +14,8 @@ class UpdateCampus extends Component {
       name: "",
       address: "",
       description: "",
-      imgUrl: ""
+      imgUrl: "",
+      errors: []
     };
   }
   componentDidMount() {
@@ -25,21 +26,44 @@ class UpdateCampus extends Component {
   };
   handleSubmit = evt => {
     evt.preventDefault();
-    this.props.updateCampus(this.state);
+    this.props.updateCampus(this.state)
+      .catch(e => this.setState({ errors: e.response.data.errors }));
   };
   render() {
     const { name, address, description, imgUrl } = this.state;
     return (
-      <CampusForm
-        name={name}
-        description={description}
-        address={address}
-        imgUrl={imgUrl}
-        handleChange={this.handleChange}
-        handleSubmit={this.handleSubmit}
-      />
+      <div>
+        <CampusForm
+          name={name}
+          description={description}
+          address={address}
+          imgUrl={imgUrl}
+          handleChange={this.handleChange}
+          handleSubmit={this.handleSubmit}
+        />
+        {this.state.errors.length > 0 ? (
+          <ul className="alert alert-danger">
+            {this.state.errors.map((error, i) => {
+              return error.errors ? (
+                error.errors.map((_error, j) => {
+                  return <li key={i + j + _error.message}>{_error.message}</li>;
+                })
+              ) : error.length > 0 ? (
+                <li key={i + error.message}>{error}</li>
+              ) : (
+                ""
+              );
+            })}
+          </ul>
+        ) : (
+          ""
+        )}
+      </div>
     );
   }
 }
 
-export default connect(null, mapDispatchToProps)(UpdateCampus);
+export default connect(
+  null,
+  mapDispatchToProps
+)(UpdateCampus);
