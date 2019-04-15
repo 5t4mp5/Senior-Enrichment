@@ -12,6 +12,9 @@ const mapStateToProps = state => ({
 const SingleStudent = ({ match, students, campuses }) => {
   const student = students.find(_student => _student.id === match.params.id);
   const campus = student ? getStudentCampus(student.campusId, campuses) : {};
+
+  if(!student && students.length) return <div className="alert alert-danger">No Student Found for this ID</div>;
+
   return student ? (
     <div>
       <div className="card">

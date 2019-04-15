@@ -13,6 +13,8 @@ const SingleCampus = ({ match, students, campuses }) => {
   const campus = campuses.find(_campus => _campus.id === match.params.id);
   const campusStudents = campus ? getCampusStudents(campus.id, students) : null;
 
+  if(!campus && campuses.length) return <div className="alert alert-danger">No Campus Found for This ID</div>;
+
   return campus ? (
     <div>
       <div className="card">
@@ -30,7 +32,7 @@ const SingleCampus = ({ match, students, campuses }) => {
                 ))}
               </ul>
             ) : (
-              "No Students"
+              "Loading..."
             )}
           </div>
         </div>
