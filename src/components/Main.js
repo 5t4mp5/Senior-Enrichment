@@ -3,9 +3,7 @@ import { connect } from "react-redux";
 import { Route, Switch, Redirect } from "react-router-dom";
 import { refreshCampuses, refreshStudents } from "../store";
 import { Campuses, CreateCampus, SingleCampus } from "./campus";
-import Students from "./Students";
-import SingleStudent from "./SingleStudent";
-import CreateStudent from "./CreateStudent";
+import { Students, SingleStudent, CreateStudent } from "./student";
 import Nav from "./Nav";
 import NoRoute from "./NoRoute";
 

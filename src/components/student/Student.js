@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { removeStudent } from "../store";
+import { removeStudent } from "../../store";
 
 const mapDispatchToProps = dispatch => ({
   deleteStudent: (student) => dispatch(removeStudent(student))

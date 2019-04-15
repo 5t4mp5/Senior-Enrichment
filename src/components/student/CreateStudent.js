@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { addStudent } from "../store";
+import { addStudent } from "../../store";
 import StudentForm from "./StudentForm";
 
 const mapDispatchToProps = dispatch => ({

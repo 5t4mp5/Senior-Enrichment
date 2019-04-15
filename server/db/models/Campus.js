@@ -41,13 +41,7 @@ const Campus = db.define("campus", {
           msg: "Campus must have a description."
         }
       }
-    }
-  }, {
-    hooks: {
-      beforeCreate: campus => {
-        if(campus.imgUrl === "") campus.imgUrl = "https://img1.looper.com/img/gallery/the-most-terrible-things-george-costanza-ever-did/intro-1504276169.jpg";
-      }
-    }
+    },
   });
 
   module.exports = Campus;
