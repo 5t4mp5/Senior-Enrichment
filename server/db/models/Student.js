@@ -43,12 +43,24 @@ const Student = db.define("student", {
   },
   imgUrl: {
     type: Sequelize.STRING,
-    defaultValue: "https://static.wixstatic.com/media/8e35a8_257d4ecb99b7413cb492305a7bb8a969~mv2.jpg/v1/fill/w_626,h_352/8e35a8_257d4ecb99b7413cb492305a7bb8a969~mv2.jpg" 
+    defaultValue: "https://static.wixstatic.com/media/8e35a8_257d4ecb99b7413cb492305a7bb8a969~mv2.jpg/v1/fill/w_626,h_352/8e35a8_257d4ecb99b7413cb492305a7bb8a969~mv2.jpg",
+    validate: {
+      urlOrBlank(url){
+        if(!Sequelize.Validator.isURL(url) && url.length > 0) throw new Error("Please enter a valid Image URL or leave the field bank.");
+      } 
+    } 
   },
   gpa: {
-    type: Sequelize.DECIMAL(10, 1),
+    type: Sequelize.DECIMAL(10, 2),
     validate: {
-      min: 0.0,
+      isDecimal: {
+        args: true,
+        msg: "GPA must be a number"
+      },
+      min: {
+        args: [0],
+        msg: "GPA cannot be less than 0.0"
+      },
       max: {
         args: 4.0,
         msg: "GPA cannot be greater than 4.0."

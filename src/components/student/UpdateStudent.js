@@ -29,6 +29,7 @@ class UpdateStudent extends Component {
   };
   handleSubmit = evt => {
     evt.preventDefault();
+    this.setState({ errors: [] });
     this.props.updateStudent(this.state)
       .catch(e => this.setState({ errors: e.response.data.errors }));
   };

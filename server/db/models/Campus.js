@@ -20,7 +20,12 @@ const Campus = db.define("campus", {
     imgUrl: {
       type: Sequelize.STRING,
       defaultValue:
-        "https://img1.looper.com/img/gallery/the-most-terrible-things-george-costanza-ever-did/intro-1504276169.jpg"
+        "https://img1.looper.com/img/gallery/the-most-terrible-things-george-costanza-ever-did/intro-1504276169.jpg",
+      validate: {
+        urlOrBlank(url){
+          if(!Sequelize.Validator.isURL(url) && url.length > 0) throw new Error("Please enter a valid Image URL or leave the field bank.");
+        } 
+      }
     },
     address: {
       type: Sequelize.STRING,
