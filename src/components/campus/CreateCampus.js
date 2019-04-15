@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { addCampus } from "../../store";
 import CampusForm from "./CampusForm";
+import Errors from "../Errors";
 
 const mapDispatchToProps = dispatch => ({
   addCampus: campus => dispatch(addCampus(campus))
@@ -40,23 +41,7 @@ class CreateCampus extends Component {
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}
         />
-        {this.state.errors.length > 0 ? (
-          <ul className="alert alert-danger">
-            {this.state.errors.map((error, i) => {
-              return error.errors ? (
-                error.errors.map((_error, j) => {
-                  return <li key={i + j + _error.message}>{_error.message}</li>;
-                })
-              ) : error.length > 0 ? (
-                <li key={i + error.message}>{error}</li>
-              ) : (
-                ""
-              );
-            })}
-          </ul>
-        ) : (
-          ""
-        )}
+        <Errors errors={this.state.errors} />
       </div>
     );
   }

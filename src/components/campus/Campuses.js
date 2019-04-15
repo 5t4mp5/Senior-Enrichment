@@ -16,7 +16,7 @@ const Campuses = ({ campuses }) => {
           <Campus key={campus.id} campus={campus} />
         ))}
       </ul>
-      <Link className="btn btn-primary" to="/create-campus">Create Campus</Link>
+      <Link className="btn btn-primary" to="/campuses/create">Create Campus</Link>
     </div>
   ) : <h2>Loading...</h2>;
 };

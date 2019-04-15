@@ -67,6 +67,7 @@ export const getCampusStudents = (campusId, students) => {
 };
 
 export const addCampus = campus => {
+  if(!campus.imgUrl.length) delete campus.imgUrl;
   return dispatch => {
     return axios
       .post("/api/campuses", campus)

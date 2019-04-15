@@ -5,13 +5,13 @@ const Nav = ({ location }) => {
   const tabs = ["Campuses", "Students"];
 
   return (
-    <ul className="nav nav-tabs">
+    <ul className="nav nav-pills">
       {tabs.map(tab => (
         <li key={tab} className="nav-item">
           <Link
             to={`/${tab.toLowerCase()}`}
             className={`nav-link ${
-              location.pathname.endsWith(tab.toLowerCase()) ? "active" : ""
+              location.pathname.includes(tab.toLowerCase()) ? "active" : ""
             }`}
           >
             {tab}

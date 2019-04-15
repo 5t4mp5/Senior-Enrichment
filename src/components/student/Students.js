@@ -16,7 +16,7 @@ const Students = ({ students }) =>{
           <Student key={student.id} student={student} />
         ))}
       </ul>
-      <Link className="btn btn-primary" to="/create-student">Create Student</Link>
+      <Link className="btn btn-primary" to="/students/create">Create Student</Link>
     </div>
   ) : <h2>Loading...</h2>;
 };

@@ -6,6 +6,7 @@ import { Campuses, CreateCampus, SingleCampus } from "./campus";
 import { Students, SingleStudent, CreateStudent } from "./student";
 import Nav from "./Nav";
 import NoRoute from "./NoRoute";
+import Errors from "./Errors";
 
 const mapDispatchToProps = dispatch => ({
   refreshCampuses: () => dispatch(refreshCampuses()),
@@ -30,32 +31,16 @@ class Main extends Component {
       <div className="container">
         <Route component={Nav} />
         <Switch>
+          <Route path="/campuses/create" component={CreateCampus} />
+          <Route path="/students/create" component={CreateStudent} />
           <Route path="/campuses/:id" component={SingleCampus} />
           <Route path="/campuses" component={Campuses} />
           <Route path="/students/:id" component={SingleStudent} />
           <Route path="/students" component={Students} />
-          <Route path="/create-campus" component={CreateCampus} />
-          <Route path="/create-student" component={CreateStudent} />
           <Redirect exact from="/" to="/campuses" />
           <Route component={NoRoute} />
         </Switch>
-        {this.state.errors.length > 0 ? (
-          <ul className="alert alert-danger">
-            {this.state.errors.map((error, i) => {
-              return error.errors ? (
-                error.errors.map((_error, j) => {
-                  return <li key={i + j + _error.message}>{_error.message}</li>;
-                })
-              ) : error.length > 0 ? (
-                <li key={i + error.message}>{error}</li>
-              ) : (
-                ""
-              );
-            })}
-          </ul>
-        ) : (
-          ""
-        )}
+        <Errors errors={this.state.errors} />
       </div>
     );
   }
