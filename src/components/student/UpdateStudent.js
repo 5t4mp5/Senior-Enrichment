@@ -32,16 +32,16 @@ class UpdateStudent extends Component {
       .catch(e => this.setState({ errors: e.response.data.errors }));
   };
   render() {
-    const { firstName, lastName, email, imgUrl, gpa, campusId } = this.state;
+    let { firstName, lastName, email, imgUrl, gpa, campusId } = this.state;
     return (
       <div>
         <StudentForm
           firstName={firstName}
           lastName={lastName}
           email={email}
-          imgUrl={imgUrl}
+          imgUrl={imgUrl ? imgUrl : ""}
           gpa={gpa}
-          campusId={campusId}
+          campusId={campusId ? campusId : ""}
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}
         />

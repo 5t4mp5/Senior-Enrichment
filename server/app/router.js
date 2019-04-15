@@ -44,7 +44,7 @@ router.put("/students/:id", (req, res, next) => {
   Student.findByPk(req.params.id)
     .then(student => student.update(req.body))
     .then(response => res.status(201).json(response))
-    .catch(next);
+    .catch(e => console.log(e));
 });
 
 router.delete("/students/:id", (req, res, next) => {

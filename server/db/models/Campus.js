@@ -42,6 +42,12 @@ const Campus = db.define("campus", {
         }
       }
     },
+  }, {
+    hooks: {
+      beforeUpdate: campus => {
+        if(!campus.imgUrl.length) campus.imgUrl = "https://img1.looper.com/img/gallery/the-most-terrible-things-george-costanza-ever-did/intro-1504276169.jpg";
+      }
+    }
   });
 
   module.exports = Campus;

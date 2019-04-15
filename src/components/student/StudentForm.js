@@ -16,6 +16,7 @@ const StudentForm = ({
   handleSubmit,
   handleChange
 }) => {
+  if(campusId === null) campusId = "";
   return (
     <form onSubmit={handleSubmit}>
       <label htmlFor="firstName">First Name</label>
