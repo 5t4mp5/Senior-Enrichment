@@ -32,7 +32,7 @@ const SingleStudent = ({ match, students, campuses }) => {
       </div>
       <UpdateStudent student={student} />
     </div>
-  ) : null;
+  ) : <h2>Loading...</h2>;
 };
 
 export default connect(mapStateToProps)(SingleStudent);

@@ -8,7 +8,7 @@ const mapStateToProps = state => ({
 });
 
 const Campuses = ({ campuses }) => {
-  return (
+  return campuses ? (
     <div>
         <h1>CAMPUSES</h1>
       <ul className="list-group">
@@ -18,7 +18,7 @@ const Campuses = ({ campuses }) => {
       </ul>
       <Link className="btn btn-primary" to="/create-campus">Create Campus</Link>
     </div>
-  );
+  ) : <h2>Loading...</h2>;
 };
 
 export default connect(mapStateToProps)(Campuses);

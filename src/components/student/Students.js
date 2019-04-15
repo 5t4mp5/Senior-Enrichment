@@ -7,16 +7,18 @@ const mapStateToProps = state => ({
   students: state.students
 });
 
-const Students = ({ students }) => (
-  <div>
-    <h1>STUDENTS</h1>
-    <ul className="list-group">
-      {students.map(student => (
-        <Student key={student.id} student={student} />
-      ))}
-    </ul>
-    <Link className="btn btn-primary" to="/create-student">Create Student</Link>
-  </div>
-);
+const Students = ({ students }) =>{
+  return students ? (
+    <div>
+      <h1>STUDENTS</h1>
+      <ul className="list-group">
+        {students.map(student => (
+          <Student key={student.id} student={student} />
+        ))}
+      </ul>
+      <Link className="btn btn-primary" to="/create-student">Create Student</Link>
+    </div>
+  ) : <h2>Loading...</h2>;
+};
 
 export default connect(mapStateToProps)(Students);

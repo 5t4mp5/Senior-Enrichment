@@ -13,9 +13,17 @@ const mapDispatchToProps = dispatch => ({
 });
 
 class Main extends Component {
+  constructor() {
+    super();
+    this.state = { errors: [] };
+  }
   componentDidMount() {
-    this.props.refreshCampuses().catch(e => console.log(e.message));
-    this.props.refreshStudents().catch(e => console.log(e.message));
+    this.props
+      .refreshCampuses()
+      .catch(e => this.setState({ errors: e.response.data.errors }));
+    this.props
+      .refreshStudents()
+      .catch(e => this.setState({ errors: e.response.data.errors }));
   }
   render() {
     return (
@@ -31,6 +39,23 @@ class Main extends Component {
           <Redirect exact from="/" to="/campuses" />
           <Route component={NoRoute} />
         </Switch>
+        {this.state.errors.length > 0 ? (
+          <ul className="alert alert-danger">
+            {this.state.errors.map((error, i) => {
+              return error.errors ? (
+                error.errors.map((_error, j) => {
+                  return <li key={i + j + _error.message}>{_error.message}</li>;
+                })
+              ) : error.length > 0 ? (
+                <li key={i + error.message}>{error}</li>
+              ) : (
+                ""
+              );
+            })}
+          </ul>
+        ) : (
+          ""
+        )}
       </div>
     );
   }
