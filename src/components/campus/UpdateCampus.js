@@ -1,42 +1,43 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { addCampus } from "../store";
+import { updateCampus } from "../../store";
 import CampusForm from "./CampusForm";
 
 const mapDispatchToProps = dispatch => ({
-  addCampus: campus => dispatch(addCampus(campus))
+  updateCampus: campus => dispatch(updateCampus(campus))
 });
 
-class CreateCampus extends Component {
+class UpdateCampus extends Component {
   constructor() {
     super();
     this.state = {
       name: "",
       address: "",
-      imgUrl: "",
       description: "",
+      imgUrl: "",
       errors: []
     };
+  }
+  componentDidMount() {
+    this.setState(this.props.campus);
   }
   handleChange = evt => {
     this.setState({ [evt.target.name]: evt.target.value });
   };
   handleSubmit = evt => {
     evt.preventDefault();
-    this.props
-      .addCampus(this.state)
-      .then(() => this.props.history.push("/campuses"))
+    this.props.updateCampus(this.state)
       .catch(e => this.setState({ errors: e.response.data.errors }));
   };
   render() {
-    const { name, address, imgUrl, description } = this.state;
+    const { name, address, description, imgUrl } = this.state;
     return (
       <div>
         <CampusForm
           name={name}
+          description={description}
           address={address}
           imgUrl={imgUrl}
-          description={description}
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}
         />
@@ -65,4 +66,4 @@ class CreateCampus extends Component {
 export default connect(
   null,
   mapDispatchToProps
-)(CreateCampus);
+)(UpdateCampus);

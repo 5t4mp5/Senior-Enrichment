@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { getStudentCampus } from "../store";
-import Campus from "./Campus";
+import { Campus } from "./campus";
 import UpdateStudent from "./UpdateStudent";
 
 const mapStateToProps = state => ({
