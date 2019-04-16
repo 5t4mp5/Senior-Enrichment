@@ -30,10 +30,12 @@ const SingleStudent = ({ match, students, campuses }) => {
               src={student.imgUrl}
               className="card-img-top"
               style={{
-                height: "360px",
-                width: "360px",
+                height: "240px",
+                width: "240px",
                 objectFit: "cover",
-                borderRadius: "30%"
+                borderRadius: "30%",
+                marginTop: "10px",
+                marginLeft: "10px"
               }}
             />
             <div style={{ fontSize: "24px" }}>

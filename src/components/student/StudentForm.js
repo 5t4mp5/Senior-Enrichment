@@ -22,9 +22,6 @@ const StudentForm = ({
     <form
       onSubmit={handleSubmit}
       className="container"
-      style={{
-        backgroundColor: "LightGray"
-      }}
     >
       <FormField
         name="firstName"

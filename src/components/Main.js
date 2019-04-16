@@ -28,7 +28,7 @@ class Main extends Component {
   }
   render() {
     return (
-      <div style={{ backgroundColor: "DarkGray", minHeight: "100%" }}>
+      <div style={{ minHeight: "100%" }}>
         <Route component={Nav} />
         <Switch>
           <Route path="/campuses/create" component={CreateCampus} />

@@ -1,0 +1,53 @@
+* {
+    background-color: darkslategray;
+    color: aliceblue;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.btn-primary {
+    background-color: cadetblue;
+    border-color: cadetblue;
+}
+
+.btn-primary:hover {
+    background-color: steelblue;
+    border-color: steelblue;
+}
+
+a {
+    color: cadetblue;
+}
+
+a:hover {
+    color: steelblue;
+}
+
+Campus, li div {
+    background-color: lightgray;
+}
+
+.nav-pills .nav-link.active  {
+    background-color: cadetblue;
+    border-color: cadetblue;
+}
+
+.nav-link.active:hover  {
+    background-color: steelblue;
+    border-color: steelblue;
+}
+
+.nav-link, .btn {
+    font-weight: bold;
+}
+
+.btn.btn-danger {
+    background-color: gray;
+    border-color: gray;
+    color: darkslategray;
+}
+
+.btn.btn-danger:hover{
+    background-color: red;
+    border-color: red;
+    color: white;
+}

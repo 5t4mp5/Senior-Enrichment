@@ -9,7 +9,7 @@ const mapDispatchToProps = dispatch => ({
 
 const Student = ({ student, deleteStudent }) => (
   <li className="list-group-item" style={{ display: "flex", justifyContent:"space-between", backgroundColor: "LightGray" }}>
-    <Link to={`/students/${student.id}`} style={{ fontSize: "24px", color: "Snow" }}>{student.firstName} {student.lastName}</Link>
+    <Link to={`/students/${student.id}`} style={{ fontSize: "24px", color: "CadetBlue" }}>{student.firstName} {student.lastName}</Link>
     <button type="button" onClick={() => deleteStudent(student)} className="btn btn-danger">X</button>
   </li>
 );

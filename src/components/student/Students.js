@@ -2,23 +2,21 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import Student from "./Student";
-
+import LinkButton from "../../LinkButton";
 const mapStateToProps = state => ({
   students: state.students
 });
 
 const Students = ({ students }) => {
   return students ? (
-    <div className="container">
+    <div className="container" style={{ color: "DimGray" }}>
       <span>
         <h1>STUDENTS</h1>
-        <Link
-          className="btn btn-primary"
+        <LinkButton
           to="/students/create"
-          style={{ marginTop: "10px", marginBottom: "10px" }}
-        >
-          Create Student
-        </Link>
+          className="btn btn-primary"
+          label="Create Student"
+        />
       </span>
       <ul className="list-group">
         {students.map(student => (

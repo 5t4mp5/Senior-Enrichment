@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import Campus from "./Campus";
+import LinkButton from "../../LinkButton";
 
 const mapStateToProps = state => ({
   campuses: state.campuses
@@ -9,15 +10,9 @@ const mapStateToProps = state => ({
 
 const Campuses = ({ campuses }) => {
   return campuses ? (
-    <div className="container">
+    <div className="container" style={{ color: "DimGray" }}>
       <h1>CAMPUSES</h1>
-      <Link
-        className="btn btn-primary"
-        to="/campuses/create"
-        style={{ marginBottom: "10px" }}
-      >
-        Create Campus
-      </Link>
+      <LinkButton to="/campuses/create" className="btn btn-primary" label="Create Campus" />
       <ul className="list-group" style={{ marginBottom: "10px" }}>
         {campuses.map(campus => (
           <Campus key={campus.id} campus={campus} />

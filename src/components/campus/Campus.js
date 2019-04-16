@@ -9,7 +9,7 @@ const mapDispatchToProps = dispatch => ({
 
 const Campus = ({ campus, deleteCampus }) => (
   <li className="list-group-item" style={{ backgroundColor: "LightGray" }}>
-    <span style={{ display: "flex", justifyContent: "space-between" }}>
+    <span style={{ display: "flex", justifyContent: "space-between", backgroundColor: "LightGray" }}>
       <img
         src={campus.imgUrl}
         style={{
@@ -22,7 +22,7 @@ const Campus = ({ campus, deleteCampus }) => (
       />
       <Link
         to={`/campuses/${campus.id}`}
-        style={{ fontSize: "48px", color: "Snow" }}
+        style={{ fontSize: "48px" }}
       >
         {campus.name}
       </Link>
