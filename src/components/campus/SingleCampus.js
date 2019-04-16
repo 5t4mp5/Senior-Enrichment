@@ -20,8 +20,8 @@ const SingleCampus = ({ match, students, campuses }) => {
 
   return campus ? (
     <div className="container">
-      <div className="card" style={{ backgroundColor: "Silver", color: "Snow" }}>
-        <div className="card-body">
+      <div className="card">
+        <div className="card-body" style={{ backgroundColor: "DarkSlateGray" }}>
           <img
             src={campus.imgUrl}
             className="card-img-top"
