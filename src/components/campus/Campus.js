@@ -8,12 +8,26 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const Campus = ({ campus, deleteCampus }) => (
-  <li className="list-group-item">
-    <span>
-      <Link to={`/campuses/${campus.id}`}>{campus.name}</Link><img src={campus.imgUrl} />
+  <li className="list-group-item" style={{ backgroundColor: "LightGray" }}>
+    <span style={{ display: "flex", justifyContent: "space-between" }}>
+      <img
+        src={campus.imgUrl}
+        style={{ width: "240px", height: "240px", objectFit: "cover", marginTop: "40px", borderRadius: "30%" }}
+      />
+      <Link to={`/campuses/${campus.id}`} style={{ fontSize: "48px", color: "Snow" }}>{campus.name}</Link>
     </span>
-    <button className="btn btn-danger" type="button" onClick={() => deleteCampus(campus)}>X</button>
+    <button
+      className="btn btn-danger"
+      type="button"
+      onClick={() => deleteCampus(campus)}
+      style={{ float: "right" }}
+    >
+      X
+    </button>
   </li>
 );
 
-export default connect(null, mapDispatchToProps)(Campus);
+export default connect(
+  null,
+  mapDispatchToProps
+)(Campus);

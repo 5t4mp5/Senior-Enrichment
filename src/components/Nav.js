@@ -12,7 +12,7 @@ const Nav = ({ location }) => {
             to={`/${tab.toLowerCase()}`}
             className={`nav-link ${
               location.pathname.includes(tab.toLowerCase()) ? "active" : ""
-            }`}
+            }`} style={{ marginBottom: "10px", marginTop: "10px" }}
           >
             {tab}
           </Link>

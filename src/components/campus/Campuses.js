@@ -9,14 +9,14 @@ const mapStateToProps = state => ({
 
 const Campuses = ({ campuses }) => {
   return campuses ? (
-    <div>
+    <div className="container">
         <h1>CAMPUSES</h1>
-      <ul className="list-group">
+      <ul className="list-group" style={{ marginBottom: "10px" }}>
         {campuses.map(campus => (
           <Campus key={campus.id} campus={campus} />
         ))}
       </ul>
-      <Link className="btn btn-primary" to="/campuses/create">Create Campus</Link>
+      <Link className="btn btn-primary" to="/campuses/create" style={{ marginBottom: "10px" }}>Create Campus</Link>
     </div>
   ) : <h2>Loading...</h2>;
 };

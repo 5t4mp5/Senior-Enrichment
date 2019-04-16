@@ -29,7 +29,7 @@ module.exports = () => {
     })
   ]).then(campuses =>
     Promise.all(
-      [...new Array(200)].map((student, i) => {
+      [...new Array(200)].map(() => {
         const newStudent = {
           firstName: faker.name.firstName(),
           lastName: faker.name.lastName(),
