@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { FormField } from "../FormField";
 
 const mapStateToProps = state => ({
   campuses: state.campuses
@@ -16,52 +17,44 @@ const StudentForm = ({
   handleSubmit,
   handleChange
 }) => {
-  if(campusId === null) campusId = "";
+  if (campusId === null) campusId = "";
   return (
-    <form onSubmit={handleSubmit} className="container" >
-      <label htmlFor="firstName">First Name</label>
-      <input
-        className="form-control"
-        type="text"
-        value={firstName}
+    <form
+      onSubmit={handleSubmit}
+      className="container"
+      style={{
+        backgroundColor: "LightGray"
+      }}
+    >
+      <FormField
         name="firstName"
-        onChange={handleChange}
+        printName="First Name"
+        value={firstName}
+        handleChange={handleChange}
       />
-
-      <label htmlFor="lastName">Last Name</label>
-      <input
-        className="form-control"
-        type="text"
-        value={lastName}
+      <FormField
         name="lastName"
-        onChange={handleChange}
+        printName="Last Name"
+        value={lastName}
+        handleChange={handleChange}
       />
-
-      <label htmlFor="email">Email</label>
-      <input
-        className="form-control"
-        type="text"
-        value={email}
+      <FormField
         name="email"
-        onChange={handleChange}
+        printName="Email"
+        value={email}
+        handleChange={handleChange}
       />
-
-      <label htmlFor="imgUrl">Image URL</label>
-      <input
-        className="form-control"
-        type="text"
-        value={imgUrl}
+      <FormField
         name="imgUrl"
-        onChange={handleChange}
+        printName="Image URL"
+        value={imgUrl}
+        handleChange={handleChange}
       />
-
-      <label htmlFor="gpa">GPA</label>
-      <input
-        className="form-control"
-        type="text"
-        value={gpa}
+      <FormField
         name="gpa"
-        onChange={handleChange}
+        printName="GPA"
+        value={gpa}
+        handleChange={handleChange}
       />
 
       <label htmlFor="campus">Campus</label>
@@ -78,8 +71,11 @@ const StudentForm = ({
           </option>
         ))}
       </select>
-
-      <button type="submit" className="btn btn-primary">
+      <button
+        type="submit"
+        className="btn btn-primary"
+        style={{ marginTop: "10px", marginBottom: "10px" }}
+      >
         Submit
       </button>
     </form>

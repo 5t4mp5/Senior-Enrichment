@@ -1,4 +1,5 @@
 import React from "react";
+import { FormField } from "../FormField";
 
 const CampusForm = ({
   name,
@@ -10,42 +11,11 @@ const CampusForm = ({
 }) => {
   return (
     <form onSubmit={handleSubmit} className="container">
-      <label htmlFor="name">Name</label>
-      <input
-        className="form-control"
-        type="text"
-        value={name}
-        name="name"
-        onChange={handleChange}
-      />
-
-      <label htmlFor="address">Address</label>
-      <input
-        className="form-control"
-        type="text"
-        value={address}
-        name="address"
-        onChange={handleChange}
-      />
-
-      <label htmlFor="imgUrl">Image URL</label>
-      <input
-        className="form-control"
-        type="text"
-        value={imgUrl}
-        name="imgUrl"
-        onChange={handleChange}
-      />
-
-      <label htmlFor="description">Description</label>
-      <input
-        className="form-control"
-        type="text"
-        value={description}
-        name="description"
-        onChange={handleChange}
-      />
-      <button type="submit" className="btn btn-primary">
+      <FormField name="name" printName="Name" value={name} handleChange={handleChange} />
+      <FormField name="address" printName="Address" value={address} handleChange={handleChange} />
+      <FormField name="imgUrl" printName="Image URL" value={imgUrl} handleChange={handleChange} />
+      <FormField name="description" printName="Description" value={description} handleChange={handleChange} />
+      <button type="submit" className="btn btn-primary" style={{ marginTop: "10px", marginBottom: "10px" }} >
         Submit
       </button>
     </form>
