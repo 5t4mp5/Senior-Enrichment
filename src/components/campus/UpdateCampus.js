@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { updateCampus } from "../../store";
 import CampusForm from "./CampusForm";
@@ -42,6 +43,7 @@ class UpdateCampus extends Component {
           imgUrl={imgUrl}
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}
+          history={this.props.history}
         />
         <Errors errors={this.state.errors} />
       </div>
@@ -49,7 +51,7 @@ class UpdateCampus extends Component {
   }
 }
 
-export default connect(
+export default withRouter(connect(
   null,
   mapDispatchToProps
-)(UpdateCampus);
+)(UpdateCampus));
