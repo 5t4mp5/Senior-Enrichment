@@ -9,7 +9,7 @@ const CampusForm = ({
   handleSubmit
 }) => {
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="container">
       <label htmlFor="name">Name</label>
       <input
         className="form-control"

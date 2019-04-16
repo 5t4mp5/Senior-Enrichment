@@ -12,18 +12,31 @@ const Campus = ({ campus, deleteCampus }) => (
     <span style={{ display: "flex", justifyContent: "space-between" }}>
       <img
         src={campus.imgUrl}
-        style={{ width: "240px", height: "240px", objectFit: "cover", marginTop: "40px", borderRadius: "30%" }}
+        style={{
+          width: "240px",
+          height: "240px",
+          objectFit: "cover",
+          marginTop: "40px",
+          borderRadius: "30%"
+        }}
       />
-      <Link to={`/campuses/${campus.id}`} style={{ fontSize: "48px", color: "Snow" }}>{campus.name}</Link>
+      <Link
+        to={`/campuses/${campus.id}`}
+        style={{ fontSize: "48px", color: "Snow" }}
+      >
+        {campus.name}
+      </Link>
+      <div>
+      <button
+        className="btn btn-danger"
+        type="button"
+        onClick={() => deleteCampus(campus)}
+        style={{ float: "right" }}
+      >
+        X
+      </button>
+      </div>
     </span>
-    <button
-      className="btn btn-danger"
-      type="button"
-      onClick={() => deleteCampus(campus)}
-      style={{ float: "right" }}
-    >
-      X
-    </button>
   </li>
 );
 

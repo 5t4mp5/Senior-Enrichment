@@ -13,18 +13,37 @@ const SingleStudent = ({ match, students, campuses }) => {
   const student = students.find(_student => _student.id === match.params.id);
   const campus = student ? getStudentCampus(student.campusId, campuses) : {};
 
-  if(!student && students.length) return <div className="alert alert-danger">No Student Found for this ID</div>;
+  if (!student && students.length)
+    return (
+      <div className="alert alert-danger">No Student Found for this ID</div>
+    );
 
   return student ? (
-    <div>
-      <div className="card">
-        <div className="card-body">
-          <img src={student.imgUrl} className="card-img-top" />
-          <h4 className="card-title">
-            Name: {student.firstName} {student.lastName}
-          </h4>
-          <p className="card-text">Email: {student.email}</p>
-          <p className="card-text">GPA: {student.gpa}</p>
+    <div className="container">
+      <div className="card" style={{ backgroundColor: "Silver" }}>
+        <div
+          className="card-body"
+          style={{ backgroundColor: "Silver", color: "Snow" }}
+        >
+          <div style={{ display: "flex", justifyContent: "space-between" }}>
+            <img
+              src={student.imgUrl}
+              className="card-img-top"
+              style={{
+                height: "360px",
+                width: "360px",
+                objectFit: "cover",
+                borderRadius: "30%"
+              }}
+            />
+            <div style={{ fontSize: "24px" }}>
+              <h2 className="card-title">
+                Name: {student.firstName} {student.lastName}
+              </h2>
+              <p className="card-text">Email: {student.email}</p>
+              <p className="card-text">GPA: {student.gpa}</p>
+            </div>
+          </div>
           <p className="card-text">
             Campus: {campus ? <Campus campus={campus} /> : "No Campus"}
           </p>
@@ -32,7 +51,9 @@ const SingleStudent = ({ match, students, campuses }) => {
       </div>
       <UpdateStudent student={student} />
     </div>
-  ) : <h2>Loading...</h2>;
+  ) : (
+    <h2>Loading...</h2>
+  );
 };
 
 export default connect(mapStateToProps)(SingleStudent);

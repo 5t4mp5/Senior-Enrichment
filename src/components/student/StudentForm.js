@@ -18,7 +18,7 @@ const StudentForm = ({
 }) => {
   if(campusId === null) campusId = "";
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="container" >
       <label htmlFor="firstName">First Name</label>
       <input
         className="form-control"
