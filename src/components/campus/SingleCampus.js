@@ -13,13 +13,26 @@ const SingleCampus = ({ match, students, campuses }) => {
   const campus = campuses.find(_campus => _campus.id === match.params.id);
   const campusStudents = campus ? getCampusStudents(campus.id, students) : null;
 
-  if(!campus && campuses.length) return <div className="alert alert-danger">No Campus Found for This ID</div>;
+  if (!campus && campuses.length)
+    return (
+      <div className="alert alert-danger">No Campus Found for This ID</div>
+    );
 
   return campus ? (
-    <div>
-      <div className="card">
+    <div className="container">
+      <div className="card" style={{ backgroundColor: "Silver", color: "Snow" }}>
         <div className="card-body">
-          <img src={campus.imgUrl} className="card-img-top" />
+          <img
+            src={campus.imgUrl}
+            className="card-img-top"
+            style={{
+              height: "480px",
+              width: "480px",
+              objectFit: "cover",
+              borderRadius: "30%",
+              marginBottom: "10px"
+            }}
+          />
           <h4 className="card-title">Campus: {campus.name}</h4>
           <p className="card-text">Address: {campus.address}</p>
           <p className="card-text">Description: {campus.description}</p>
