@@ -5,7 +5,7 @@ const Nav = ({ location }) => {
   const tabs = ["Campuses", "Students"];
 
   return (
-    <ul className="nav nav-pills">
+    <ul className="nav nav-pills" style={{ marginLeft: "10px" }}>
       {tabs.map(tab => (
         <li key={tab} className="nav-item">
           <Link
