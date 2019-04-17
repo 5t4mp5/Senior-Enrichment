@@ -1,8 +1,7 @@
 import React from "react";
-import { Route } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
-import { getCampusStudents } from "../../store";
-import { Student } from "../student";
+import { Students } from "../student";
 import UpdateCampus from "./UpdateCampus";
 import LinkButton from "../../LinkButton";
 
@@ -11,9 +10,8 @@ const mapStateToProps = state => ({
   campuses: state.campuses
 });
 
-const SingleCampus = ({ location, match, students, campuses }) => {
+const SingleCampus = ({ location, match, campuses }) => {
   const campus = campuses.find(_campus => _campus.id === match.params.id);
-  const campusStudents = campus ? getCampusStudents(campus.id, students) : null;
 
   if (!campus && campuses.length)
     return (
@@ -42,27 +40,21 @@ const SingleCampus = ({ location, match, students, campuses }) => {
             ""
           ) : (
             <LinkButton
-              to={`${location.pathname}update`}
+              to={`${location.pathname}/update`}
               label="Update Campus"
               className="btn btn-primary"
             />
           )}
-          {location.pathname.endsWith("update") ? (
-            <UpdateCampus campus={campus} />
-          ) : (
-            <div className="card-text">
-              Students:{" "}
-              {campusStudents ? (
-                <ul className="list-group">
-                  {campusStudents.map(_student => (
-                    <Student student={_student} key={_student.id} />
-                  ))}
-                </ul>
-              ) : (
-                "Loading..."
-              )}
-            </div>
-          )}
+            <Switch>
+              <Route
+                path="/campuses/:id/update"
+                render={() => <UpdateCampus campus={campus} />}
+              />
+              <Route
+                path="/campuses"
+                render={() => <Students campusId={campus.id} />}
+              />
+            </Switch>
         </div>
       </div>
     </div>

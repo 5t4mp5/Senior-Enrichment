@@ -5,7 +5,7 @@ module.exports = () => {
   return Promise.all([
     Campus.create({
       name: "Adams Hall",
-      address: "1 North Cemetary Drive",
+      address: "1 North Cemetery Drive",
       description:
         "The Addams family mansion is the ancestral home of the Addams family. Its properties, dimensions and decor are as strange and mysterious as the family itself. But, as they say, 'weird is relative'. The mansion is decorated with various bricabrac, all of which seem to hail from different tastes. This ranges from suits of armor to life-sized preserved animal remains. Doors tend to open and close on their own, and there appear to be numerous unseen passageways through which the disembodied hand, Thing, may travel.",
       imgUrl:

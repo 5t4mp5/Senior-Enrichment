@@ -1,13 +1,13 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
 import Student from "./Student";
 import LinkButton from "../../LinkButton";
 const mapStateToProps = state => ({
   students: state.students
 });
 
-const Students = ({ students }) => {
+const Students = ({ students, campusId }) => {
+  if(campusId) students = students.filter(student => student.campusId === campusId);
   return students ? (
     <div className="container" style={{ color: "DimGray" }}>
       <span>
