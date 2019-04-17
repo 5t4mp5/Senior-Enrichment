@@ -45,16 +45,20 @@ const SingleCampus = ({ location, match, campuses }) => {
               className="btn btn-primary"
             />
           )}
-            <Switch>
-              <Route
-                path="/campuses/:id/update"
-                render={() => <UpdateCampus campus={campus} />}
-              />
-              <Route
-                path="/campuses"
-                render={() => <Students campusId={campus.id} />}
-              />
-            </Switch>
+          <Switch>
+            <Route
+              path="/campuses/:id/update"
+              render={() => <UpdateCampus campus={campus} />}
+            />
+            <Route
+              path="/campuses"
+              render={() => (
+                <div className="container" style={{ border: "1px solid white" }}>
+                  <Students campusId={campus.id} />
+                </div>
+              )}
+            />
+          </Switch>
         </div>
       </div>
     </div>
