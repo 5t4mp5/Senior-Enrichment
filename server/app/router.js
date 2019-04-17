@@ -44,7 +44,7 @@ router.post("/students", (req, res, next) => {
 });
 
 router.put("/students/:id", (req, res, next) => {
-  if (req.body.campusId && !req.body.campusId.length) req.body.campusId = null;
+  if (!req.body.campusId) req.body.campusId = null;
   Student.findByPk(req.params.id)
     .then(student => student.update(req.body))
     .then(response => res.status(201).json(response))
