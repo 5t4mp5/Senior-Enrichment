@@ -3,7 +3,7 @@ import { Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
 import { Students } from "../student";
 import UpdateCampus from "./UpdateCampus";
-import LinkButton from "../../LinkButton";
+import LinkButton from "../LinkButton";
 
 const mapStateToProps = state => ({
   students: state.students,

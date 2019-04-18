@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import Student from "./Student";
-import LinkButton from "../../LinkButton";
+import LinkButton from "../LinkButton";
 const mapStateToProps = state => ({
   students: state.students
 });
