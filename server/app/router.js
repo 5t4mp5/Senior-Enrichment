@@ -3,7 +3,7 @@ const router = express.Router();
 const { Student, Campus } = require("../db");
 
 router.get("/campuses", (req, res, next) => {
-  Campus.findAll()
+  Campus.findAll({ order: [["name", "asc"]] })
     .then(campuses => res.json(campuses))
     .catch(next);
 });
@@ -30,7 +30,7 @@ router.delete("/campuses/:id", (req, res, next) => {
 });
 
 router.get("/students", (req, res, next) => {
-  Student.findAll()
+  Student.findAll({ order:[["lastName", "asc"]] })
     .then(students => res.json(students))
     .catch(next);
 });
